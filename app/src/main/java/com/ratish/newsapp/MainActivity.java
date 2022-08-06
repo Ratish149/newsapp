@@ -11,12 +11,14 @@ import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
+
     TabLayout tabLayout;
     TabItem home,popular,search;
     NewsPagerAdapter pagerAdapter;
     Toolbar toolbar;
     ViewPager viewPager;
 
+    String api="6bf2e4eef2a0478cb4e5b8440f01b75e";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

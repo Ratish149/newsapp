@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/itemLayout_CardView"
+    app:cardElevation="5dp"
+    android:padding="10dp"
+    android:elevation="5dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="6dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:id="@+id/newsTitle"
+            android:padding="5dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:text="News Main Title"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:padding="5dp"
+                android:id="@+id/newsContent"
+                android:textSize="15sp"
+                android:text="News main content"/>
+            <ImageView
+                android:id="@+id/newsImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/newsAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="by Someone"
+            android:textSize="13sp"
+            android:textStyle="italic"
+            android:textColor="#246EE9"
+            android:padding="5dp"/>
+        <TextView
+            android:id="@+id/newsPublishedTime"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:text="Published At:" />
+
+
+
+    </LinearLayout>
+
+
+
+</androidx.cardview.widget.CardView>
