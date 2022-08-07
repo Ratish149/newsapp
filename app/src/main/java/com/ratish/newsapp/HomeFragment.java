@@ -25,6 +25,7 @@ public class HomeFragment extends Fragment {
     ArrayList<NewsModelClass> modelClassArrayList;
     Adapter adapter;
 
+    String q = "apple";
     RecyclerView homeRecyclerView;
 
     @Nullable
@@ -35,7 +36,9 @@ public class HomeFragment extends Fragment {
 
         homeRecyclerView=view.findViewById(R.id.rvHomeFragment);
         modelClassArrayList = new ArrayList<>();
-        homeRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        LinearLayoutManager manager = new LinearLayoutManager(getContext());
+        homeRecyclerView.setLayoutManager(manager);
+        homeRecyclerView.setHasFixedSize(true);
         adapter = new Adapter(getContext(),modelClassArrayList);
         homeRecyclerView.setAdapter(adapter);
 
@@ -45,19 +48,13 @@ public class HomeFragment extends Fragment {
     }
 
     private void findNews() {
-        ApiClass.getApiInterface().getNews(api).enqueue(new Callback<News>() {
-            @SuppressLint("NotifyDataSetChanged")
+        ApiClass.getApiInterface().getNews(q,api).enqueue(new Callback<News>() {
             @Override
-            public void onResponse(@NonNull Call<News> call, @NonNull Response<News> response) {
+            public void onResponse(Call<News> call, Response<News> response) {
                 if(response.isSuccessful()){
-                    assert response.body() != null;
                     modelClassArrayList.addAll(response.body().getArticles());
                     adapter.notifyDataSetChanged();
                 }
-                else{
-                    Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
-                }
-
             }
 
             @Override
@@ -65,5 +62,7 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
+
     }
 }

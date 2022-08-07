@@ -29,7 +29,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @NonNull
     @Override
     public Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_layout,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_layout, null, false);
         return new ViewHolder(view);
     }
 
@@ -39,18 +39,24 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.itemLayout_CardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context,webView.class);
-                intent.putExtra("url",modelClassArrayList.get(holder.getAdapterPosition()).getUrl());
+                Intent intent = new Intent(context, NewsDetail.class);
+                intent.putExtra("title", modelClassArrayList.get(holder.getAdapterPosition()).getTitle());
+                intent.putExtra("description", modelClassArrayList.get(holder.getAdapterPosition()).getDescription());
+                intent.putExtra("author", modelClassArrayList.get(holder.getAdapterPosition()).getAuthor());
+                intent.putExtra("image", modelClassArrayList.get(holder.getAdapterPosition()).getUrlToImage());
+                intent.putExtra("published", modelClassArrayList.get(holder.getAdapterPosition()).getPublishedAt());
+
+                intent.putExtra("url", modelClassArrayList.get(holder.getAdapterPosition()).getUrl());
                 context.startActivity(intent);
+
+
             }
         });
-       holder.newsTitle.setText(modelClassArrayList.get(position).getTitle());
-       holder.newsContent.setText(modelClassArrayList.get(position).getDescription());
-       holder.newsAuthor.setText(modelClassArrayList.get(position).getAuthor());
-       holder.newsPublishedTime.setText(modelClassArrayList.get(position).getPublishedAt());
-       Glide.with(context).load(modelClassArrayList.get(position).getUrlToImage()).into(holder.newsImage);
-
-
+        holder.newsTitle.setText(modelClassArrayList.get(position).getTitle());
+        holder.newsContent.setText(modelClassArrayList.get(position).getDescription());
+        holder.newsAuthor.setText(modelClassArrayList.get(position).getAuthor());
+        holder.newsPublishedTime.setText("Published At: " + modelClassArrayList.get(position).getPublishedAt());
+        Glide.with(context).load(modelClassArrayList.get(position).getUrlToImage()).into(holder.newsImage);
 
 
     }
@@ -61,9 +67,10 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView newsTitle,newsContent,newsAuthor,newsPublishedTime;
+        TextView newsTitle, newsContent, newsAuthor, newsPublishedTime;
         ImageView newsImage;
         CardView itemLayout_CardView;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             newsTitle = itemView.findViewById(R.id.newsTitle);

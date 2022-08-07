@@ -22,6 +22,7 @@ public class PopularFragment extends Fragment {
     ArrayList<NewsModelClass> modelClassArrayList;
     Adapter adapter;
     RecyclerView popularRecyclerView;
+    String q = "apple";
     String sort = "popularity";
     @Nullable
     @Override
@@ -39,7 +40,7 @@ public class PopularFragment extends Fragment {
     }
 
     private void findNews() {
-        ApiClass.getApiInterface().getSortNews(sort,api).enqueue(new Callback<News>() {
+        ApiClass.getApiInterface().getSortNews(q,sort,api).enqueue(new Callback<News>() {
             @Override
             public void onResponse(@NonNull Call<News> call, @NonNull Response<News> response) {
                 if(response.isSuccessful()){

@@ -20,10 +20,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="News App"
+                android:text="Apple News"
                 android:textColor="#246EE9"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
+
         </RelativeLayout>
 
     </androidx.appcompat.widget.Toolbar>
@@ -56,6 +57,7 @@
             android:text="Search" />
 
     </com.google.android.material.tabs.TabLayout>
+
 
 
     <androidx.viewpager.widget.ViewPager
